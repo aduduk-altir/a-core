@@ -1,0 +1,45 @@
+{
+  "name": "a-core",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "start": "webpack serve --open --hot --config webpack/webpack.config.js --env env=dev",
+    "build": "webpack --config webpack/webpack.config.js --env env=prod",
+    "see:prod": "cd build && npx serve",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "e2e": "npx playwright test",
+    "lint": "eslint ./src/**/*.{js,jsx,ts,tsx} --format=table && prettier --check src/**/*.{js,ts,tsx}",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint --rule '{\"no-console\":[\"error\",{\"allow\":[\"info\",\"warn\",\"error\",\"group\",\"groupCollapsed\",\"groupEnd\"]}]}' -f table"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "typescript": "4.3.5"
+  }
+}
