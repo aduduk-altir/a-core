@@ -22,6 +22,8 @@ export const uselessFunction = () => {
   console.log('hello world');
 }
 
+type HasFeature<TKeys extends string> = (feature: TKeys) => boolean;
+
 /*
  Creates strongly typed `hasFeature` with provided features set and current `env` source
  */
@@ -31,7 +33,7 @@ export const createHasFeature = <
 >(
   stages: TStages,
   getEnv: () => TEnvLabel,
-) => {
+): HasFeature<TKeys> => {
   return (feature: TKeys) => {
     const releaseStage = stages[feature];
 
