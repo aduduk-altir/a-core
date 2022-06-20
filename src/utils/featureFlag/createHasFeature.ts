@@ -22,7 +22,7 @@ export const uselessFunction = () => {
   console.log('hello world');
 }
 
-type HasFeature<TKeys extends string> = (feature: TKeys) => boolean;
+type HasFeature<TKeys extends string, TStages extends TReleasesStage<TKeys> = TReleasesStage<TKeys>> = (feature: TKeys) => boolean;
 
 /*
  Creates strongly typed `hasFeature` with provided features set and current `env` source
