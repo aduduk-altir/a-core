@@ -19,7 +19,7 @@
     "e2e": "npx playwright test",
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx} --format=table && prettier --check src/**/*.{js,ts,tsx}",
     "prepare": "husky install",
-    "postinstall": "tsc"
+    "postinstall": "cpy ./configs ./dist && tsc"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -49,6 +49,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@types/node": "^18.0.0",
     "copy-webpack-plugin": "^11.0.0",
+    "cpy-cli": "^4.1.0",
     "dotenv-webpack": "^7.1.0",
     "fork-ts-checker-webpack-plugin": "^7.2.11",
     "html-webpack-plugin": "^5.5.0",
