@@ -18,6 +18,10 @@ const inStage = (releaseStage: keyof IEnvironmentsByStage, getEnv: () => TEnvLab
   return allowedEnvironments.includes(currentEnv);
 };
 
+export const uselessFunction = () => {
+  console.log('hello world');
+}
+
 /*
  Creates strongly typed `hasFeature` with provided features set and current `env` source
  */

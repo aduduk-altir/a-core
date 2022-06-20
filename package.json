@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {},
+  "main": "dist/utils/index.js",
+  "types": "dist/utils/index.d.ts",
   "scripts": {
     "start": "webpack serve --open --hot --config webpack/webpack.config.js --env env=dev",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
@@ -12,7 +14,9 @@
     "test:watch": "jest --watch",
     "e2e": "npx playwright test",
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx} --format=table && prettier --check src/**/*.{js,ts,tsx}",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "tsc",
+    "start-tsc": "tsc"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
