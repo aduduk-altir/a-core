@@ -26,7 +26,7 @@ module.exports = (options) => {
       clean: true,
     },
     resolve: {
-      plugins: [new TsconfigPathsPlugin(options.tsConfigPath)],
+      plugins: [new TsconfigPathsPlugin({ configFile: options.tsConfigPath })],
       extensions: ['.tsx', '.ts', '.js', '.json'],
     },
     module: {
