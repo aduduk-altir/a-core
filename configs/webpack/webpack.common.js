@@ -8,7 +8,7 @@ const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const createPaths = require('./paths');
 
 module.exports = (options) => {
-  const paths = createPaths(options.root);
+  const paths = createPaths(options);
 
   return {
     target: 'web',
@@ -26,7 +26,7 @@ module.exports = (options) => {
       clean: true,
     },
     resolve: {
-      plugins: [new TsconfigPathsPlugin({ configFile: options.tsConfigPath })],
+      plugins: [new TsconfigPathsPlugin({ configFile: paths.tsConfig })],
       extensions: ['.tsx', '.ts', '.js', '.json'],
     },
     module: {
@@ -37,7 +37,7 @@ module.exports = (options) => {
           options: {
             loader: 'tsx',
             target: 'es2015',
-            tsconfigRaw: require(options.tsConfigPath),
+            tsconfigRaw: require(paths.tsConfig),
           },
           exclude: /node_modules/,
         },

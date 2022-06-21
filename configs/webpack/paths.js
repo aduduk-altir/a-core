@@ -1,7 +1,8 @@
 const path = require('path');
 
-module.exports = (dirname) => ({
-  src: path.resolve(dirname, '../src'),
-  public: path.resolve(dirname, '../public'),
-  build: path.resolve(dirname, '../build'),
+module.exports = ({ root, tsConfigPath = 'tsconfig.json'}) => ({
+  src: path.resolve(root, 'src'),
+  public: path.resolve(root, 'public'),
+  build: path.resolve(root, 'build'),
+  tsConfig: path.resolve(root, tsConfigPath)
 });
