@@ -9,8 +9,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "configs",
-    "utils"
+    "dist"
   ],
   "scripts": {
     "start": "webpack serve --open --hot --config webpack/webpack.config.js --env env=dev",
