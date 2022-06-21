@@ -3,8 +3,6 @@
   "version": "1.1.2",
   "private": true,
   "dependencies": {},
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "configs",
     "utils"
@@ -18,7 +16,6 @@
     "test:watch": "jest --watch",
     "e2e": "npx playwright test",
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx} --format=table && prettier --check src/**/*.{js,ts,tsx}",
-    "prepare": "husky install",
     "postinstall": "cpy ./configs ./dist && tsc"
   },
   "lint-staged": {
