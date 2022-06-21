@@ -7,12 +7,12 @@ const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 
 const paths = require('./paths');
 
-module.exports = {
+module.exports = (options) => ({
   target: 'web',
   entry: {
     env: {
       import: path.resolve(paths.src, 'env.ts'),
-      filename: 'public/env.js?',
+      filename: 'public/env.js',
     },
     main: path.resolve(paths.src, 'index.tsx'),
   },
@@ -34,7 +34,7 @@ module.exports = {
         options: {
           loader: 'tsx',
           target: 'es2015',
-          tsconfigRaw: require('../../tsconfig.json'),
+          tsconfigRaw: require(options.tsConfigPath),
         },
         exclude: /node_modules/,
       },
@@ -65,11 +65,14 @@ module.exports = {
       showErrors: true,
       cache: true,
       template: path.resolve(paths.public, 'index.html'),
-      entry: []
+      chunks: [
+        'env',
+        'main',
+      ]
     }),
     new webpack.ProvidePlugin({
       React: 'react',
     }),
     new ForkTsCheckerPlugin(),
   ],
-};
+});

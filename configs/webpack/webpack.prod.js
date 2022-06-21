@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-module.exports = {
+module.exports = (options) => ({
   mode: 'production',
   devtool: 'source-map',
   optimization: {
@@ -26,4 +26,4 @@ module.exports = {
       include: [],
     }),
   ],
-};
+});

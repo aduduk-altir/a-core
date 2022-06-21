@@ -2,7 +2,7 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-module.exports = {
+module.exports = (options) => ({
   mode: 'development',
   devServer: {
     hot: true,
@@ -24,4 +24,4 @@ module.exports = {
     // https://github.com/webpack/webpack-dev-server/issues/2792
     runtimeChunk: 'single',
   },
-};
+});
