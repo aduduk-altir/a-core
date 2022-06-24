@@ -2,16 +2,11 @@
   "name": "@aduduk-altir/a-core",
   "version": "1.2.1",
   "private": false,
-  "dependencies": {
-    "@types/react": "17",
-    "cpy-cli": "^4.1.0"
-  },
+  "dependencies": {},
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "license": "MIT",
   "scripts": {
     "start": "webpack serve --open --hot --config webpack/webpack.config.js --env env=dev",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
@@ -21,7 +16,10 @@
     "test:watch": "jest --watch",
     "e2e": "npx playwright test",
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx} --format=table && prettier --check src/**/*.{js,ts,tsx}",
-    "postinstall": "cpy ./configs ./dist && tsc"
+    "prepublish:clean": "rimraf build",
+    "prepublish:copy-files": "cpy package.json build && cpy README.md build",
+    "prepublish:build": "cpy configs/* build && tsc",
+    "prepublish": "yarn prepublish:clean && yarn prepublish:copy-files && yarn prepublish:build"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -50,11 +48,14 @@
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@types/node": "^18.0.0",
+    "@types/react": "17",
     "copy-webpack-plugin": "^11.0.0",
+    "cpy-cli": "^4.1.0",
     "dotenv-webpack": "^7.1.0",
     "fork-ts-checker-webpack-plugin": "^7.2.11",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
+    "rimraf": "^3.0.2",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "4.3.5",
     "webpack": "^5.73.0",
@@ -69,5 +70,8 @@
   "sideEffects": false,
   "peerDependencies": {
     "react": "17"
+  },
+  "publishConfig": {
+    "@aduduk-altir:registry": "https://npm.pkg.github.com"
   }
 }
