@@ -9,17 +9,17 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve --open --hot --config webpack/webpack.config.js --env env=dev",
-    "build": "webpack --config webpack/webpack.config.js --env env=prod",
+    "build": "tsc",
     "see:prod": "cd build && npx serve",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "e2e": "npx playwright test",
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx} --format=table && prettier --check src/**/*.{js,ts,tsx}",
-    "prepublish:clean": "rimraf build",
-    "prepublish:copy-files": "cpy package.json build && cpy README.md build",
-    "prepublish:build": "cpy configs/* build && tsc",
-    "prepublish": "yarn prepublish:clean && yarn prepublish:copy-files && yarn prepublish:build"
+    "prebuild": "rimraf build",
+    "prepack:copy-files": "cpy package.json build && cpy README.md build",
+    "prepack:copy-packages": "cpy configs/* build",
+    "prepack": "yarn build && yarn prepack:copy-files && yarn prepack:copy-packages"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
