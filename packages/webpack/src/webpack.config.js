@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack.common');
+const createPaths = require('./paths');
 
 /**
  * typedef Options
@@ -16,6 +17,7 @@ const commonConfig = require('./webpack.common');
 module.exports = (options) => (envVars) => {
   const { env } = envVars;
   const envConfig = require(`./webpack.${env}.js`);
+  const paths = createPaths(options);
 
-  return merge(commonConfig(options), envConfig(options));
+  return merge(commonConfig(paths), envConfig(paths));
 };

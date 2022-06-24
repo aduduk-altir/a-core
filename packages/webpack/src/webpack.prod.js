@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-module.exports = (options) => ({
+module.exports = (paths) => ({
   mode: 'production',
   devtool: 'source-map',
   optimization: {
@@ -21,7 +21,7 @@ module.exports = (options) => ({
       'process.env.STRIPE_KEY': JSON.stringify(process.env.STRIPE_KEY),
     }),
     new InjectManifest({
-      swSrc: './src/sw.js',
+      swSrc: `./${paths.files.serviceWorkerEntry}`,
       swDest: 'sw.js',
       include: [],
     }),

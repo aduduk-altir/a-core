@@ -1,0 +1,1 @@
+DEPENDENCIES: @pmmmwh/react-refresh-webpack-plugin copy-webpack-plugin dotenv-webpack fork-ts-checker-webpack-plugin html-webpack-plugin tsconfig-paths-webpack-plugin webpack webpack-cli webpack-dev-server webpack-merge workbox-webpack-plugin esbuild-loader
